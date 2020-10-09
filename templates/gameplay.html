@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Gameplay</title>
+        <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+        <h1>Tic Tac Toe</h1>
+        <form action="/game" method="POST">
+            <table border = 1>
+                <tr>
+                    <td>{{ game[0][0] }}<input type="radio" name="player move" value=0></td>
+                    <td>{{ game[0][1] }}<input type="radio" name="player move" value=1></td>
+                    <td>{{ game[0][2] }}<input type="radio" name="player move" value=2></td>
+                </tr>
+                <tr>
+                    <td>{{ game[1][0] }}<input type="radio" name="player move" value=3></td>
+                    <td>{{ game[1][1] }}<input type="radio" name="player move" value=4></td>
+                    <td>{{ game[1][2] }}<input type="radio" name="player move" value=5></td>
+                </tr>
+                <tr>
+                    <td>{{ game[2][0] }}<input type="radio" name="player move" value=6></td>
+                    <td>{{ game[2][1] }}<input type="radio" name="player move" value=7></td>
+                    <td>{{ game[2][2] }}<input type="radio" name="player move" value=8></td>
+                </tr>
+            </table>
+            <div class="col text-center">
+                <button type="submit" class="btn btn-primary">Play</button>
+                <button type="submit" class="btn btn-primary" name="new_game" value="new_game">New Game</button>
+            </div>
+        </form>
+    </body>
+</html>
+
+
+
