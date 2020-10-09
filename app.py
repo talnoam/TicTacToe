@@ -8,7 +8,7 @@ from game_functions import play
 session = []
 app = Flask(__name__)
 
-@app.route("/tictactoe", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def game():
 
     if request.form.get("new_game"):
