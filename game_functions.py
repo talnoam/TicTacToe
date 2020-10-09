@@ -184,6 +184,7 @@ def best_next_move(game, scores):
 def check_for_winners(game):
   old_game = game.copy()
 
+  response = []
   empty_slots = 0
   for i in range(len(game)):
     for j in range(len(game[i])):
@@ -197,85 +198,73 @@ def check_for_winners(game):
     for i in range(len(game_status(game, 1))):
       for j in range(len(game_status(game, 1)[i])):
         if game_status(game, 1)[i][j] == 3:
-          print('I win!')
-          print(game)
-          print('new game:')
+          response.append('I win!')
           game = np.asarray([0, 0, 0, 0, 0, 0, 0, 0, 0] ).reshape( (3,3) )
         
 
         elif game_status(game, 2)[i][j] == 3:
-          print('You win!')
-          print(game)
-          print('new game:')
+          response.append('You win!')
           game = np.asarray([0, 0, 0, 0, 0, 0, 0, 0, 0] ).reshape( (3,3) )
+  
 
         
-  return game, old_game
+  return game, response
 
 
 def play(game, number):
 
   if number == 0:
     if game[0][0] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[0][0] = 2
   if number == 1:
     if game[0][1] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[0][1] = 2
   if number == 2:
     if game[0][2] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[0][2] = 2
   if number == 3:
     if game[1][0] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[1][0] = 2
   if number == 4:
     if game[1][1] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[1][1] = 2
   if number == 5:
     if game[1][2] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[1][2] = 2
   if number == 6:
     if game[2][0] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[2][0] = 2
   if number == 7:
     if game[2][1] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[2][1] = 2
   if number == 8:
     if game[2][2] != 0:
-      print('ocupied, play different move:')
-      print(game)
-      return game
+      response = ['ocupied, play different move:']
+      return game, response
     else:
       game[2][2] = 2
 
@@ -290,20 +279,16 @@ def play(game, number):
   res5 = not scores[1]['2']
 
   if res0 == True and res1== True and res2 == True and res3 == True and res4== True and res5 == True:
-    game, old_game = check_for_winners(game)
-    print('tie!')
-    print(game)
-    print('new game:')
+    game, response = check_for_winners(game)
+    response = ['tie!']
+    response.append('new game:')
     game = np.asarray([0, 0, 0, 0, 0, 0, 0, 0, 0] ).reshape( (3,3) )
 
   else:
-    print('my turn:')
     move, game = best_next_move(game, scores)
     game[move[0], move[1]] = 1
-    game, old_game = check_for_winners(game)
+    game, response = check_for_winners(game)
   
-  print(game)
-
-  return game
+  return game, response
 
 

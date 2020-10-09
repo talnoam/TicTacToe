@@ -1,34 +1,103 @@
 <!doctype html>
-<html>
+<html lang="en">
     <head>
-        <title>Gameplay</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Pacifico" />
+        <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" type=text/css href="{{ url_for('static', filename='style.css') }}">
+        <title>Gameplay</title>
     </head>
     <body>
+        <div class="container">
+            <h4><image id="logo" src="{{url_for('static',filename = 'img/polyweb.png')}}" style="padding-right: 5px;"></image>PolyWeb</h4>
+        </div>
         <h1>Tic Tac Toe</h1>
-        <form action="/game" method="POST">
-            <table border = 1>
-                <tr>
-                    <td>{{ game[0][0] }}<input type="radio" name="player move" value=0></td>
-                    <td>{{ game[0][1] }}<input type="radio" name="player move" value=1></td>
-                    <td>{{ game[0][2] }}<input type="radio" name="player move" value=2></td>
-                </tr>
-                <tr>
-                    <td>{{ game[1][0] }}<input type="radio" name="player move" value=3></td>
-                    <td>{{ game[1][1] }}<input type="radio" name="player move" value=4></td>
-                    <td>{{ game[1][2] }}<input type="radio" name="player move" value=5></td>
-                </tr>
-                <tr>
-                    <td>{{ game[2][0] }}<input type="radio" name="player move" value=6></td>
-                    <td>{{ game[2][1] }}<input type="radio" name="player move" value=7></td>
-                    <td>{{ game[2][2] }}<input type="radio" name="player move" value=8></td>
-                </tr>
-            </table>
-            <div class="col text-center">
-                <button type="submit" class="btn btn-primary">Play</button>
-                <button type="submit" class="btn btn-primary" name="new_game" value="new_game">New Game</button>
-            </div>
-        </form>
+        <div>
+            <form action="/tictactoe" method="POST">
+                <p>{{ response[0] }}</p>
+                <p>{{ response[1] }}</p>
+                <table border = 1>
+                    <tr>
+                        {% if game[0][0] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=0></td>
+                        {% elif game[0][0] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=0></td>
+                        {% elif game[0][0] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=0></td>
+                        {% endif %}
+                        {% if game[0][1] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=1></td>
+                        {% elif game[0][1] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=1></td>
+                        {% elif game[0][1] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=1></td>
+                        {% endif %}
+                        {% if game[0][2] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=2></td>
+                        {% elif game[0][2] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=2></td>
+                        {% elif game[0][2] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=2></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if game[1][0] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=3></td>
+                        {% elif game[1][0] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=3></td>
+                        {% elif game[1][0] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=3></td>
+                        {% endif %}
+                        {% if game[1][1] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=4></td>
+                        {% elif game[1][1] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=4></td>
+                        {% elif game[1][1] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=4></td>
+                        {% endif %}
+                        {% if game[1][2] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=5></td>
+                        {% elif game[1][2] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=5></td>
+                        {% elif game[1][2] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=5></td>
+                        {% endif %}
+                    </tr>
+                    <tr>
+                        {% if game[2][0] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=6></td>
+                        {% elif game[2][0] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=6></td>
+                        {% elif game[2][0] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=6></td>
+                        {% endif %}
+                        {% if game[2][1] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=7></td>
+                        {% elif game[2][1] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=7></td>
+                        {% elif game[2][1] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=7></td>
+                        {% endif %}
+                        {% if game[2][2] == 0 %}
+                        <td><input type="radio" class="radio" name="player move" value=8></td>
+                        {% elif game[2][2] == 1 %}
+                        <td>O <input type="radio" class="radio" name="player move" value=8></td>
+                        {% elif game[2][2] == 2 %}
+                        <td>X <input type="radio" class="radio" name="player move" value=8></td>
+                        {% endif %}
+                    </tr>
+                </table>
+                <div class="col text-center">
+                    <button style="margin:20px;" type="submit" class="btn btn-outline-dark" id="play">Play</button>
+                    <button type="submit" class="btn btn-outline-dark" name="new_game" value="new_game">New Game</button>
+                </div>
+            </form>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
 </html>
 
