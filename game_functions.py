@@ -285,9 +285,16 @@ def play(game, number):
     game = np.asarray([0, 0, 0, 0, 0, 0, 0, 0, 0] ).reshape( (3,3) )
 
   else:
-    move, game = best_next_move(game, scores)
-    game[move[0], move[1]] = 1
     game, response = check_for_winners(game)
+    if response == ['You win!']:
+      return game, response
+
+    else:
+      move, game = best_next_move(game, scores)
+      game[move[0], move[1]] = 1
+      game, response = check_for_winners(game)
+    
+    
   
   return game, response
 
