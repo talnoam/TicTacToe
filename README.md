@@ -4,12 +4,14 @@ Built for python 3
 
 To run the game, do the following:
 
-Install the requirements from the requirements.txt file
+1) Install the requirements from the requirements.txt file
 
-Unzip folder
+2) Unzip folder
 
-Drag it to the terminal (or open the terminal in the TicTacToe main folder) and run the command:
+3) Drag it to the terminal (or open the terminal in the TicTacToe main folder) and run the command:
 
-python -m flask run
+4) python -m flask run
 
-Enter localhost from internet browser in: http://localhost:5000/
+5) Enter localhost from internet browser in: http://localhost:5000/
+
+Enjoy!
